@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Getting Started With Shiny</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="introtoShinySatRDay_files\rmdshower/node_modules/shower-mango/styles/screen-4x3.css">
+  <link rel="stylesheet" href="introtoShinySatRDay_files\rmdshower/style-common.css">
+  <link rel="stylesheet" href="introtoShinySatRDay_files\rmdshower/style-mango.css">
+  
+  
+    <style type="text/css">
+   div.sourceCode { overflow-x: auto; }
+   table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+     margin: 0; padding: 0; vertical-align: baseline; border: none; }
+   table.sourceCode { width: 100%; line-height: 100%; }
+   td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+   td.sourceCode { padding-left: 5px; }
+   code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+   code > span.dt { color: #902000; } /* DataType */
+   code > span.dv { color: #40a070; } /* DecVal */
+   code > span.bn { color: #40a070; } /* BaseN */
+   code > span.fl { color: #40a070; } /* Float */
+   code > span.ch { color: #4070a0; } /* Char */
+   code > span.st { color: #4070a0; } /* String */
+   code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+   code > span.ot { color: #007020; } /* Other */
+   code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+   code > span.fu { color: #06287e; } /* Function */
+   code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+   code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+   code > span.cn { color: #880000; } /* Constant */
+   code > span.sc { color: #4070a0; } /* SpecialChar */
+   code > span.vs { color: #4070a0; } /* VerbatimString */
+   code > span.ss { color: #bb6688; } /* SpecialString */
+   code > span.im { } /* Import */
+   code > span.va { color: #19177c; } /* Variable */
+   code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+   code > span.op { color: #666666; } /* Operator */
+   code > span.bu { } /* BuiltIn */
+   code > span.ex { } /* Extension */
+   code > span.pp { color: #bc7a00; } /* Preprocessor */
+   code > span.at { color: #7d9029; } /* Attribute */
+   code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+   code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+   code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+   code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  
+  
+  
+</head>
+
+<body class="shower list">
+
+  <header class="caption">
+    <h1>Getting Started With Shiny</h1>
+    <p>Kate Ross-Smith</p>
+  </header>
+
+    <section class="slide level1 titlepage">
+    <h1>Getting Started With Shiny</h1>
+    <h2>Kate Ross-Smith <br> <a href="mailto:kross-smith@mango-solutions.com">kross-smith@mango-solutions.com</a></h2>
+  </section>
+    
+  
+<section id="pre-requisites" class="slide level2">
+<h2>Pre-requisites</h2>
+<p>Before we start the workshop, please make sure you have the following installed:</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Essential</th>
+<th style="text-align: center;">Nice to Have</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Workshop Files</td>
+<td style="text-align: center;">RStudio</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">R</td>
+<td style="text-align: center;">devtools</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">shiny</td>
+<td style="text-align: center;">miniUI</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p class="note">
+Workshop files are on the memory sticks floating around or on github /KateR-S/shinySatRDay
+</p>
+</section>
+<section id="outline" class="slide level2">
+<h2>Outline</h2>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Section 1</td>
+<td style="text-align: center;">Make a basic app</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Section 2</td>
+<td style="text-align: center;">Make a kick-ass app</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Section 3</td>
+<td style="text-align: center;">Make the app into an add-in</td>
+</tr>
+</tbody>
+</table>
+<p class="note">
+If you want to take a break at any point, please just do so… slides are on the memory stick too so you can always catch up!
+</p>
+</section>
+<section id="lets-start-with-an-app" class="titleslide slide level1"><h2 class="shout">Let’s start with an app!</h2></section><section id="a-super-basic-app" class="slide level2">
+<h2>A super basic app</h2>
+<ol type="1">
+<li>Load Shiny</li>
+<li>Open <code>example01_app.r</code></li>
+<li>Run the app</li>
+</ol>
+</section>
+<section id="the-anatomy-of-an-app" class="titleslide slide level1"><h2 class="shout">The anatomy of an app</h2></section><section id="what-the-user-sees" class="slide level2">
+<h2>What the user sees:</h2>
+<ul>
+<li>Some kind of web page</li>
+<li>Input elements</li>
+<li>Output elements</li>
+</ul>
+</section><section id="whats-in-the-code" class="slide level2">
+<h2>What’s in the code</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ui &lt;-<span class="st"> </span><span class="kw">shinyUI</span>(
+  <span class="kw">fluidPage</span>(                        &lt;--<span class="st"> </span>Web page
+   
+  <span class="kw">textInput</span>(<span class="st">&quot;identity&quot;</span>,             &lt;--<span class="st"> </span>Input element
+            <span class="st">&quot;Who are you?&quot;</span>, 
+            <span class="dt">value =</span> <span class="st">&quot;World&quot;</span>),
+  
+  <span class="kw">textOutput</span>(<span class="st">&quot;helloAns&quot;</span>)            &lt;--<span class="st"> </span>Output element
+   
+))</code></pre></div>
+</section><section id="what-the-user-does" class="slide level2">
+<h2>What the user does:</h2>
+<ul>
+<li>sees a different answer</li>
+<li>depending on what they’ve put in the text box</li>
+</ul>
+</section><section id="whats-in-the-code-1" class="slide level2">
+<h2>What’s in the code</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">server &lt;-<span class="st"> </span><span class="kw">shinyServer</span>(function(input, output) {
+                                                        
+  output$helloAns &lt;-<span class="st"> </span><span class="kw">renderText</span>({   &lt;--<span class="st"> </span>A different answer
+                                                        
+    <span class="kw">paste</span>(<span class="st">&quot;Hello&quot;</span>, 
+          input$identity)           &lt;--<span class="st"> </span>Contents of the text box
+  })
+  
+})</code></pre></div>
+</section><section id="full-anatomy" class="slide level2">
+<h2>Full anatomy</h2>
+<ol type="1">
+<li>ui
+<ul>
+<li>object created by shinyUI function</li>
+<li>in basic apps contains the “user interface” functionality</li>
+</ul></li>
+<li>server
+<ul>
+<li>object created by shinyServer function</li>
+<li>controls what R does during user interactivity</li>
+</ul></li>
+<li>shinyApp
+<ul>
+<li>the function that kicks off the running of the app</li>
+</ul></li>
+</ol>
+</section>
+<section id="some-important-points" class="titleslide slide level1"><h2 class="shout">Some important points</h2></section><section id="ui-elements-are-function-calls" class="slide level2">
+<h2>UI elements are function calls</h2>
+<ul>
+<li>ui elements are often <strong>calls to functions</strong>.</li>
+<li>But they can have <strong>a lot</strong> of arguments.</li>
+<li>So we often put them on multiple lines.</li>
+<li><strong>IT IS REALLY EASY TO FORGET TO COMMA SEPARATE THE ARGUMENTS!</strong></li>
+</ul>
+</section><section id="how-and-where-to-run-choices" class="slide level2">
+<h2>How and where to run… choices</h2>
+<ul>
+<li>you can run shiny apps by either:
+<ul>
+<li>using <code>runApp()</code> or</li>
+<li>by clicking Run App in RStudio</li>
+</ul></li>
+<li>you can also choose where the app runs
+<ul>
+<li>Window</li>
+<li>Viewer pane</li>
+<li>External</li>
+</ul></li>
+</ul>
+</section><section id="exercise-01" class="slide level2">
+<h2>Exercise 01</h2>
+<p>Have a look at <code>exercise_01_app.R</code>. The code indicated by the comments needs finishing.</p>
+<p>Finish it!</p>
+</section>
+<section id="splitting-the-page" class="titleslide slide level1"><h2 class="shout">Splitting the page</h2></section><section id="main-layout-options" class="slide level2">
+<h2>Main layout options</h2>
+<ul>
+<li>Split the page into columns</li>
+<li>Add a sidebar</li>
+</ul>
+</section><section id="columns" class="slide level2">
+<h2>Columns</h2>
+<ul>
+<li>Uses the <code>column()</code> function</li>
+<li>Where the page is split into a ‘grid’</li>
+<li>With a max width of 12</li>
+</ul>
+<p class="note">
+<p>This is implemented with an html-generating function</p>
+</section><section id="sidebar" class="slide level2">
+<h2>Sidebar</h2>
+<ul>
+<li>Within <code>fluidpage()</code></li>
+<li>Uses a <code>sidebarLayout()</code></li>
+<li>With a <code>sidebarPanel()</code> and a <code>mainPanel()</code></li>
+</ul>
+<p class="note">
+Have a look at example03_app.R to see this
+</p>
+</section><section id="exercise-02" class="slide level2">
+<h2>Exercise 02</h2>
+<p>Have a look at <code>exercise_02_app.R</code>. The code indicated by the comments needs finishing.</p>
+<p>Finish it!</p>
+</section>
+<section id="inputs-and-outputs" class="titleslide slide level1"><h2 class="shout">Inputs and Outputs</h2></section><section id="whats-available" class="slide level2">
+<h2>What’s available?</h2>
+</section><section id="input-widgets" class="slide level2">
+<h2>1. Input widgets</h2>
+<p>Examples:</p>
+<ul>
+<li><strong>Buttons</strong>: actionButton, downloadButton, submitButton</li>
+<li><strong>Simple Choices</strong>: checkboxInput, radioButtons, sliderInput</li>
+<li><strong>Pickers</strong>: selectInput, selectizeInput, dateInput</li>
+<li><strong>Simple input</strong>: numericInput, textInput</li>
+<li><strong>Special cases</strong>: fileInput, passwordInput</li>
+</ul>
+</section><section id="output-widgets" class="slide level2">
+<h2>2. Output widgets</h2>
+<ul>
+<li>dataTableOutput - renderDataTable</li>
+<li>img - renderImage</li>
+<li>plotOutput - renderPlot</li>
+<li>textOutput - renderText</li>
+<li>tableOutput - renderTable</li>
+</ul>
+</section><section id="html-output" class="slide level2">
+<h2>3. Html output</h2>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Headings</td>
+<td style="text-align: center;">h1(), h2(), h3(), h4(), h5()…</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Dividers</td>
+<td style="text-align: center;">span(), br()</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Text formatting</td>
+<td style="text-align: center;">strong(), em(), pre(), code()</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Objects</td>
+<td style="text-align: center;">img(), a()</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Raw html</td>
+<td style="text-align: center;">html()</td>
+</tr>
+</tbody>
+</table>
+</section><section id="want-more" class="slide level2">
+<h2>Want more?</h2>
+<p>But there are more available!</p>
+<p><a>http://shiny.rstudio.com/reference/shiny/latest</a></p>
+</section><section id="exercise-03" class="slide level2">
+<h2>Exercise 03</h2>
+<p>Create a ui that has:</p>
+<ul>
+<li>two checkboxes</li>
+<li>one slider going from 0 to 1</li>
+</ul>
+<p class="note">
+Use <code>exercise03_app.R</code> for the app barebones
+</p>
+</section><section id="exercise-04" class="slide level2">
+<h2>Exercise 04</h2>
+<p>Now on that same file:</p>
+<ul>
+<li>Add a bar plot that displays the values of the inputs</li>
+<li>hint: use as.numeric for the checkbox values</li>
+</ul>
+<p class="note">
+Use <code>exercise04_app.R</code> if you haven’t finished the previous exercise
+</p>
+</section><section id="exercise-05" class="slide level2">
+<h2>Exercise 05</h2>
+<p>Start with a blank R script, and make a shiny app that:</p>
+<ul>
+<li>asks a user for:
+<ul>
+<li>a number between 1 and 500</li>
+<li>a colour from a list (hint: <code>?colours</code>)</li>
+</ul></li>
+<li>and displays:
+<ul>
+<li>a histogram of random samples from the normal distribution</li>
+<li>with n being the number input by the user</li>
+<li>filled with the user’s colour choice</li>
+</ul></li>
+</ul>
+</section>
+<section id="we-need-to-talk-about-reactivity" class="titleslide slide level1"><h2 class="shout">…we need to talk about reactivity</h2></section><section id="reactivity" class="slide level2">
+<h2>Reactivity</h2>
+<p>We’ve been using a version of it in a lot of our apps so far. It’s just the way that shiny handles: * the user doing something * and the app ‘reacting’ to that</p>
+<p>So why change?</p>
+</section><section id="input---render---output-model" class="slide level2">
+<h2>INPUT - RENDER - OUTPUT model</h2>
+<p>When the user changes their choices, we’re actually <strong>re-running all of the code in the app</strong>.</p>
+<p>Not good.</p>
+</section><section id="input---render---reactive---output" class="slide level2">
+<h2>INPUT - RENDER - REACTIVE() - OUTPUT</h2>
+<p>We can put the “changing” code in a <code>reactive()</code> function.</p>
+<p>This means that this portion of the code is only re-run when that value is changed.</p>
+<p>The more things are separated out, the more targetted the code re-run is.</p>
+<p class="note">
+Have a look at <code>example07_app.R</code> and <code>example08_app.R</code> to see this
+</p>
+</section><section id="exercise-06" class="slide level2">
+<h2>Exercise 06</h2>
+<p>Take the output from the last exercise (exercise 05) and make it more efficient using the <code>reactive()</code> function.</p>
+<p class="note">
+Use <code>exercise06_app.R</code> if you haven’t finished the previous exercise
+</p>
+</section>
+<section id="gadgets" class="titleslide slide level1"><h2 class="shout">Gadgets</h2></section><section id="gadgets-1" class="slide level2">
+<h2>Gadgets</h2>
+<p>Gadgets are a way of packaging shiny apps into a single function.</p>
+<p>If you can create a shiny app, you can create a gadget</p>
+</section><section id="cool-huh-huh" class="slide level2">
+<h2>Cool, huh… huh?</h2>
+<p>So why would you want to use this?</p>
+<p>Well, to create a cool RStudio addin of course!</p>
+</section><section id="whats-an-addin" class="slide level2">
+<h2>What’s an addin?</h2>
+<p><code>devtools::install_github(&quot;rstudio/addinexamples&quot;, type = &quot;source&quot;)</code></p>
+</section><section id="how-do-you-get-from-a-shiny-app-to-an-add-in" class="slide level2">
+<h2>How do you get from a shiny app to an add-in?</h2>
+<ol type="1">
+<li>Use miniUI</li>
+<li>Put all your code into a function</li>
+<li>Put your ui code into miniPage instead of shinyUI</li>
+<li>Make server into a normal function too!</li>
+<li>Add the addtional “session” variable to your server file</li>
+<li>Add runGadget at the end of the function</li>
+</ol>
+<p class="note">
+Have a look at <code>example12_app.R</code>
+</p>
+</section><section id="exercise-10" class="slide level2">
+<h2>Exercise 10</h2>
+<ul>
+<li>Take the code from exercise 06 (this is already in <code>exercise10_app.R</code> if you need it)</li>
+<li>Make it into a gadget</li>
+</ul>
+<p class="note">
+Remeber to install miniUI if you don’t already have it
+</p>
+</section><section id="making-a-gadget-into-an-add-in" class="slide level2">
+<h2>Making a gadget into an add-in</h2>
+<p>To register this on the drop-down menu, you need to:</p>
+<ol type="1">
+<li>make it into a package</li>
+<li>add a special file in directory</li>
+</ol>
+</section>
+
+  <!--
+  To hide progress bar from entire presentation
+  just remove “progress” element.
+  -->
+  <!-- <div class="progress"></div> -->
+  <script src="introtoShinySatRDay_files\rmdshower/node_modules/shower/node_modules/shower-core/shower.min.js"></script>
+  <!-- Copyright © 2015 Yours Truly, Famous Inc. -->
+  <!-- Photos by John Carey, fiftyfootshadows.net -->
+
+  
+  
+</body>
+</html>
