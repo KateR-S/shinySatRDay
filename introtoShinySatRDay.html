@@ -355,6 +355,57 @@ Have a look at <code>example07_app.R</code> and <code>example08_app.R</code> to 
 <p class="note">
 Use <code>exercise06_app.R</code> if you haven’t finished the previous exercise
 </p>
+</section><section id="other-reactives" class="slide level2">
+<h2>Other reactives</h2>
+<p>We can make our reactive more specific other types of reactive. These functions create a reactive dependency on a specfic object type. e.g.:</p>
+<ul>
+<li>reactiveValues</li>
+<li>reactiveText</li>
+<li>reactivePlot</li>
+<li>reactivePoll</li>
+</ul>
+</section><section id="observers" class="slide level2">
+<h2>Observers</h2>
+<p>As well as creating a chain of events with <code>reactive()</code> we can use observers.</p>
+<ul>
+<li>Observers are blocks of code that perform actions.</li>
+<li>They are executed in response to changing reactive values/expressions.</li>
+<li>They don’t return a value.</li>
+</ul>
+</section><section id="observers-come-in-two-flavours" class="slide level2">
+<h2>Observers come in two flavours</h2>
+<ol type="1">
+<li class="fragment next"><strong>Implicit:</strong> Depend on <em>all</em> reactive values/expressions encountered during execution.<br />
+<code>observe({...})</code><br />
+ </li>
+<li class="fragment next"><strong>Explicit:</strong> Just depend on <em>specific</em> reactive value/expression; ignore all others. (Also known as “event handler”.)<br />
+<code>observeEvent(eventExpr, {...})</code></li>
+</ol>
+</section><section id="exercise-08" class="slide level2">
+<h2>Exercise 08</h2>
+<p>Open <code>Exercise08_app.R</code>.</p>
+<p>Add server logic so that when the <code>input$save</code> button is pressed, the data is saved to a CSV file called <code>&quot;data.csv&quot;</code> in the current directory.</p>
+</section>
+<section id="reactive-expressions-vs.observers" class="titleslide slide level1"><h2 class="shout">Reactive expressions vs. observers</h2></section><section id="reactive" class="slide level2">
+<h2><code>reactive()</code></h2>
+<ol type="1">
+<li class="fragment next">It <strong>can be called</strong> and <strong>returns a value</strong>, like a function. Either the last expression, or <code>return()</code>.</li>
+<li class="fragment next">It’s <strong>lazy</strong>. It doesn’t execute its code until somebody calls it (even if its reactive dependencies have changed). Also like a function.</li>
+<li class="fragment next">It’s <strong>cached</strong>. The first time it’s called, it executes the code and saves the resulting value. Subsequent calls can skip the execution and just return the value.</li>
+<li class="fragment next">It’s <strong>reactive</strong>. It is notified when its dependencies change. When that happens, it clears its cache and notifies it dependents.</li>
+</ol>
+</section><section id="observe-observeevent" class="slide level2">
+<h2><code>observe()</code> / <code>observeEvent()</code></h2>
+<ol type="1">
+<li class="fragment next">It <strong>can’t be called</strong> and <strong>doesn’t return a value</strong>. The value of the last expression will be thrown away, as will values passed to <code>return()</code>.</li>
+<li class="fragment next">It’s <strong>eager</strong>. When its dependencies change, it executes right away.</li>
+<li class="fragment next">(Since it can’t be called and doesn’t have a return value, there’s no notion of caching that applies here.)</li>
+<li class="fragment next">It’s <strong>reactive</strong>. It is notified when its dependencies change, and when that happens it executes (not right at that instant, but ASAP).</li>
+</ol>
+</section><section id="huh" class="slide level2">
+<h2>Huh?</h2>
+<p>A <strong>calculation</strong> is a block of code where you don’t care about whether the code actually executesâ€”you just want the answer. Safe for caching. <strong>Use <code>reactive()</code>.</strong></p>
+<p>An <strong>action</strong> is where you care very much that the code executes, and there is no answer (return value), only side effects. <strong>Use <code>observe()</code>/<code>observeEvent()</code>.</strong></p>
 </section>
 <section id="gadgets" class="titleslide slide level1"><h2 class="shout">Gadgets</h2></section><section id="gadgets-1" class="slide level2">
 <h2>Gadgets</h2>

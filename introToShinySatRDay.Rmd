@@ -258,6 +258,59 @@ Take the output from the last exercise (exercise 05) and make it more efficient 
 
 <p class="note"> Use ```exercise06_app.R``` if you haven't finished the previous exercise </p>
 
+## Other reactives
+
+We can make our reactive more specific other types of reactive. These functions create a reactive dependency on a specfic object type. e.g.:
+
+* reactiveValues
+* reactiveText
+* reactivePlot
+* reactivePoll
+
+## Observers
+
+As well as creating a chain of events with ```reactive()``` we can use observers.
+
+* Observers are blocks of code that perform actions.
+* They are executed in response to changing reactive values/expressions.
+* They don't return a value.
+
+## Observers come in two flavours
+
+> 1. **Implicit:** Depend on _all_ reactive values/expressions encountered during execution.  
+`observe({...})`  
+&nbsp;
+> 2. **Explicit:** Just depend on _specific_ reactive value/expression; ignore all others. (Also known as "event handler".)  
+`observeEvent(eventExpr, {...})`
+
+## Exercise 08
+
+Open `Exercise08_app.R`.
+
+Add server logic so that when the `input$save` button is pressed, the data is saved to a CSV file called `"data.csv"` in the current directory.
+
+# Reactive expressions vs. observers
+
+## `reactive()`
+
+> 1. It **can be called** and **returns a value**, like a function. Either the last expression, or `return()`.
+> 2. It's **lazy**. It doesn't execute its code until somebody calls it (even if its reactive dependencies have changed). Also like a function.
+> 3. It's **cached**. The first time it's called, it executes the code and saves the resulting value. Subsequent calls can skip the execution and just return the value.
+> 4. It's **reactive**. It is notified when its dependencies change. When that happens, it clears its cache and notifies it dependents.
+
+## `observe()` / `observeEvent()`
+
+> 1. It **can't be called** and **doesn't return a value**. The value of the last expression will be thrown away, as will values passed to `return()`.
+> 2. It's **eager**. When its dependencies change, it executes right away.
+> 3. (Since it can't be called and doesn't have a return value, there's no notion of caching that applies here.)
+> 4. It's **reactive**. It is notified when its dependencies change, and when that happens it executes (not right at that instant, but ASAP).
+
+## Huh?
+
+A **calculation** is a block of code where you don't care about whether the code actually executes—you just want the answer. Safe for caching. **Use `reactive()`.**
+
+An **action** is where you care very much that the code executes, and there is no answer (return value), only side effects. **Use `observe()`/`observeEvent()`.**
+
 # Gadgets
 
 ## Gadgets
